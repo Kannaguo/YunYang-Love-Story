@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>千言万语 (YunYang Love Story) - 官方宣传网站</title>
+    <style>
+        /* --- 全局样式重置与字体设置 --- */
+        body, h1, h2, h3, p, ul {
+            margin: 0;
+            padding: 0;
+            font-family: 'Microsoft YaHei', 'SimHei', sans-serif;
+        }
+
+        /* * --- 背景优化 ---
+         * 1. 基础背景色设为柔和的粉白色。
+         * 2. 使用伪元素添加两个角落的腊梅装饰，并固定位置。
+        */
+        body {
+            background-color: #FFFBFB; /* 柔和的粉白色背景 */
+            color: #444; /* 深灰色文字，比纯黑更柔和 */
+            line-height: 1.6;
+            position: relative; /* 为伪元素定位提供基准 */
+        }
+
+        /* 右上角腊梅装饰 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background-image: url('https://png.pngtree.com/png-vector/20221230/ourmid/pngtree-plum-blossom-branch-png-image_6543621.png'); /* 这是一个示例腊梅图，您可以替换成自己的 */
+            background-size: contain;
+            background-repeat: no-repeat;
+            opacity: 0.5; /* 半透明，不抢眼 */
+            z-index: -1; /* 放置在内容底层 */
+            pointer-events: none; /* 让鼠标可以穿透它 */
+        }
+
+        /* 左下角腊梅装饰 (可选，如果觉得太花哨可以删除这段) */
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -50px; /* 稍微移出画面，看起来更自然 */
+            left: -50px;
+            width: 250px;
+            height: 250px;
+            background-image: url('https://png.pngtree.com/png-vector/20221230/ourmid/pngtree-plum-blossom-branch-png-image_6543621.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            transform: scaleX(-1); /* 水平翻转，使其朝向不同 */
+            opacity: 0.3;
+            z-index: -1;
+            pointer-events: none;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* --- 内容区块背景优化 --- */
+        .content-section {
+            padding: 50px 0;
+             /* 略带透明的白色背景，能透出底下的背景和装饰 */
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(5px); /* 毛玻璃效果，让背景模糊，突出内容 (现代浏览器支持) */
+            margin-top: 20px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.05);
+        }
+
+        /* --- 导航栏 --- */
+        header {
+            background-color: rgba(255, 255, 255, 0.7); /* 半透明导航栏 */
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        header .logo {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #D687A8; /* 粉色调Logo */
+        }
+
+        header nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #555;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #d66a9f;
+        }
+
+        /* --- 主视觉区域 --- */
+        .hero {
+            background-image: url('https://via.placeholder.com/1200x600/F5E6EB/333333?text=c:');
+            height: 60vh;
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            border-radius: 15px;
+            margin: 20px auto 0;
+            max-width: 1200px;
+        }
+
+        .hero-content {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 20px 40px;
+            border-radius: 10px;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-family: 'KaiTi', 'SimKai', serif;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+        }
+
+        /* --- 内容区域通用标题 --- */
+        .section-title {
+            text-align: center;
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            color: #C67B9A; /* 柔和的粉色标题 */
+            padding-top: 10px;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+        
+        #story p {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        /* --- 角色介绍 --- */
+        .character-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 25px;
+        }
+
+        .character-card {
+            background-color: #fff; /* 卡片本身保持不透明，确保内容清晰 */
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            width: 250px;
+            text-align: center;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid #f0e8e8;
+        }
+
+        .character-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(180, 122, 149, 0.2);
+        }
+
+        .character-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        .character-card h3 {
+            font-size: 1.6em;
+            color: #d66a9f;
+        }
+        
+        .character-card .class-info {
+            font-size: 0.9em;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        .character-card .description {
+            font-size: 0.95em;
+            color: #666;
+            text-align: left;
+        }
+        
+        .features-list {
+            list-style: none;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .features-list li {
+            font-size: 1.2em;
+            padding: 10px;
+            border-bottom: 1px solid #eee;
+        }
+        .features-list li strong {
+            color: #C67B9A;
+        }
+
+        /* --- 页脚 --- */
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">千言万语</div>
+        <nav>
+            <a href="#story">故事</a>
+            <a href="#characters">角色</a>
+            <a href="#features">特色</a>
+            <a href="#">最新消息</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>千言万语</h1>
+            <p>将藏在心底的千言万语，说给你听</p>
+        </div>
+    </section>
+
+    <main>
+        <section id="story" class="content-section">
+            <div class="container">
+                <h2 class="section-title">STORY</h2>
+                <p>
+                    身为高二3班学生的我，本以为高中生活会一如既往地平淡下去。
+                    直到那个夏天，我的世界因她们而变得绚烂多彩。
+                    遥不可及的冰山学姐、温柔可靠的同班班长、才华横溢的年级第一学妹，以及舞台上光芒四射的舞蹈少女。
+                    当四个截然不同的青春轨迹与我交汇之时，那些未曾说出口的“千言万语”，又将引向怎样的未来？
+                </p>
+            </div>
+        </section>
+
+        <section id="characters" class="content-section">
+            <div class="container">
+                <h2 class="section-title">CHARACTERS</h2>
+                <div class="character-grid">
+                    <div class="character-card">
+                        <img src="https://via.placeholder.com/250x400/D3D3D3/ffffff?text=肖奈+立绘" alt="肖奈">
+                        <h3>肖奈</h3>
+                        <p class="class-info">高三(8)班 / 学姐</p>
+                        <p class="description">颜值出众，在学校中是万众瞩目的存在，但在外人看来她高冷难以接近。</p>
+                    </div>
+                    <div class="character-card">
+                        <img src="https://via.placeholder.com/250x400/F0E68C/000000?text=钟杉+立绘" alt="钟杉">
+                        <h3>钟杉</h3>
+                        <p class="class-info">高二(3)班 / 同班班长</p>
+                        <p class="description">善解人意，热心帮助同学和老师，担任班长职务，总是乐于助人。</p>
+                    </div>
+                    <div class="character-card">
+                        <img src="image/人物/文雨/文雨介绍原图.png" alt="文雨">
+                        <h3>文雨</h3>
+                        <p class="class-info">高一(1)班 / 学妹</p>
+                        <p class="description">成绩十分拔尖，长期位于年级第一。不仅精于数理，还热爱诗书。</p>
+                    </div>
+                    <div class="character-card">
+                        <img src="https://via.placeholder.com/250x400/FFB6C1/000000?text=林田婉儿+立绘" alt="林田婉儿">
+                        <h3>林田婉儿</h3>
+                        <p class="class-info">高二(4)班 / 舞蹈生</p>
+                        <p class="description">性格活泼，常常活跃在学校各个文艺社团，是舞台上最耀眼的存在。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="features" class="content-section">
+            <div class="container">
+                <h2 class="section-title">FEATURES</h2>
+                <ul class="features-list">
+                    <li><strong>精美立绘与CG：</strong>由知名画师倾情绘制，带来极致的视觉享受。</li>
+                    <li><strong>全语音剧情：</strong>豪华声优阵容，为您呈现生动的角色情感。</li>
+                    <li><strong>动人的原创音乐：</strong>由专业音乐团队打造，完美烘托游戏氛围。</li>
+                    <li><strong>多分支选择：</strong>您的每一个决定，都将影响故事的走向与结局。</li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 千言万语制作组. All Rights Reserved.</p>
+        <p>YunYang Love Story</p>
+    </footer>
+
+</body>
+</html>
